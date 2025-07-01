@@ -33,7 +33,7 @@ const CompanyDashboard = () => {
       minHeight: '100vh',
       backgroundColor: '#f8f9fa',
       fontFamily: 'Arial, sans-serif',
-      padding: '2rem'
+      padding: '1rem'
     },
     main: {
       maxWidth: '1200px',
@@ -42,22 +42,22 @@ const CompanyDashboard = () => {
       gap: '2rem'
     },
     companySection: {
-      backgroundColor: '#7E44EE',
-      border: '1px solid rgba(126, 68, 238, 0.2)',
+      backgroundColor: 'white',
+      border: '1px solid #e9ecef',
       borderRadius: '12px',
-      padding: '2rem',
-      boxShadow: '0 4px 12px rgba(126, 68, 238, 0.3)',
+      padding: '1.6rem',
+      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
       position: 'relative'
     },
     companyName: {
       fontSize: '2.2rem',
       fontWeight: 'bold',
-      color: 'white',
-      marginBottom: '1.5rem'
+      color: '#343a40',
+      marginBottom: '0.5rem'
     },
     companyDetails: {
       display: 'flex',
-      gap: '2rem',
+      gap: '1rem',
       alignItems: 'center',
       flexWrap: 'wrap'
     },
@@ -65,16 +65,16 @@ const CompanyDashboard = () => {
       display: 'flex',
       alignItems: 'center',
       gap: '0.5rem',
-      color: 'rgba(255, 255, 255, 0.9)',
+      color: '#6c757d',
       fontSize: '1rem'
     },
     editButton: {
       position: 'absolute',
       top: '2rem',
       right: '2rem',
-      backgroundColor: 'white',
-      color: '#7E44EE',
-      border: '2px solid white',
+      backgroundColor: '#7E44EE',
+      color: 'white',
+      border: '2px solid #7E44EE',
       borderRadius: '8px',
       padding: '0.8rem 1.5rem',
       display: 'flex',
@@ -94,8 +94,8 @@ const CompanyDashboard = () => {
       backgroundColor: '#7E44EE',
       color: 'white',
       borderRadius: '12px',
-      padding: '2rem',
-      boxShadow: '0 6px 20px rgba(126, 68, 238, 0.3)',
+      padding: '1rem',
+      boxShadow: '0 4px 12px rgba(126, 68, 238, 0.3)',
       transition: 'transform 0.2s ease, box-shadow 0.2s ease',
       cursor: 'pointer'
     },
@@ -107,7 +107,7 @@ const CompanyDashboard = () => {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      marginBottom: '1.5rem'
+      marginBottom: '1rem'
     },
     statTitle: {
       fontSize: '1.1rem',
@@ -115,7 +115,8 @@ const CompanyDashboard = () => {
       color: 'white'
     },
     statIcon: {
-      opacity: 0.9
+      opacity: 0.9,
+      color: 'white'
     },
     statCount: {
       fontSize: '3rem',
@@ -136,39 +137,39 @@ const CompanyDashboard = () => {
       gap: '2rem'
     },
     actionBox: {
-      backgroundColor: '#7E44EE',
-      border: '1px solid rgba(126, 68, 238, 0.2)',
+      backgroundColor: 'white',
+      border: '1px solid #e9ecef',
       borderRadius: '12px',
-      padding: '2rem',
-      boxShadow: '0 4px 12px rgba(126, 68, 238, 0.3)'
+      padding: '1rem',
+      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
     },
     infoBox: {
-      backgroundColor: '#7E44EE',
-      border: '1px solid rgba(126, 68, 238, 0.2)',
+      backgroundColor: 'white',
+      border: '1px solid #e9ecef',
       borderRadius: '12px',
-      padding: '2rem',
-      boxShadow: '0 4px 12px rgba(126, 68, 238, 0.3)'
+      padding: '1rem',
+      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
     },
     boxTitle: {
-      fontSize: '1.4rem',
+      fontSize: '1.2rem',
       fontWeight: 'bold',
-      color: 'white',
-      marginBottom: '1.5rem'
+      color: '#343a40',
+      marginBottom: '1rem'
     },
     infoBoxTitle: {
       fontSize: '1.4rem',
       fontWeight: 'bold',
-      color: 'white',
-      marginBottom: '1.5rem'
+      color: '#343a40',
+      marginBottom: '1rem'
     },
     actionButton: {
       display: 'flex',
       alignItems: 'center',
       gap: '0.75rem',
       width: '100%',
-      backgroundColor: 'white',
-      border: '2px solid white',
-      color: '#7E44EE',
+      backgroundColor: '#7E44EE',
+      border: '2px solid #7E44EE',
+      color: 'white',
       borderRadius: '8px',
       padding: '1rem',
       marginBottom: '1rem',
@@ -179,7 +180,7 @@ const CompanyDashboard = () => {
       textAlign: 'left'
     },
     actionButtonHover: {
-      backgroundColor: 'rgba(255, 255, 255, 0.9)',
+      backgroundColor: '#6c35cc',
       transform: 'translateX(2px)',
       color: 'white'
     },
@@ -188,25 +189,26 @@ const CompanyDashboard = () => {
       gap: '1rem'
     },
     infoItem: {
-      backgroundColor: 'white',
+      backgroundColor: '#f8f9fa',
       borderRadius: '8px',
-      padding: '1rem 1.5rem',
-      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+      padding: '1rem 1rem',
+      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
       display: 'flex',
       alignItems: 'center',
-      gap: '0.5rem'
+      gap: '0.5rem',
+      border: '1px solid #e9ecef'
     },
     infoLabel: {
       fontWeight: '600',
-      color: '#7E44EE',
+      color: '#495057',
       fontSize: '0.95rem',
       flexShrink: 0
     },
     infoValue: {
-      color: '#7E44EE',
+      color: '#6c757d',
       fontSize: '0.95rem',
       fontWeight: '500',
-      opacity: 0.8
+      opacity: 0.9
     },
     loading: {
       display: 'flex',
@@ -339,23 +341,6 @@ const CompanyDashboard = () => {
             </div>
             <div style={styles.statCount}>{companyData.employees_count || totalEmployees}</div>
             <div style={styles.statCTA}>View Employees →</div>
-          </div>
-
-          <div 
-            style={{
-              ...styles.statCard,
-              ...(hoveredCard === 'departments' ? styles.statCardHover : {})
-            }}
-            onMouseEnter={() => setHoveredCard('departments')}
-            onMouseLeave={() => setHoveredCard(null)}
-            onClick={handleManageDepartments}
-          >
-            <div style={styles.statHeader}>
-              <h3 style={styles.statTitle}>Departments</h3>
-              <BarChart3 size={28} style={styles.statIcon} />
-            </div>
-            <div style={styles.statCount}>{companyData.departments_count || 0}</div>
-            <div style={styles.statCTA}>Manage Departments →</div>
           </div>
         </section>
 

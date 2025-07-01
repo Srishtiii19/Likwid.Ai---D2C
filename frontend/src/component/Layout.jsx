@@ -30,7 +30,7 @@ const Layout = () => {
       backgroundColor: '#f8f9fa'
     },
     sidebar: {
-      width: '260px',
+      width: '250px',
       backgroundColor: '#ffffff',
       boxShadow: '2px 0 10px rgba(0, 0, 0, 0.1)',
       display: 'flex',
@@ -70,7 +70,7 @@ const Layout = () => {
     navItemActive: {
       backgroundColor: '#f3f4f6',
       color: '#7c3aed',
-      fontWeight: '600',
+      fontWeight: '500',
       border: '1px solid #e5e7eb'
     },
     navItemHover: {
@@ -147,18 +147,18 @@ const Layout = () => {
         { path: '/company-dashboard', label: 'Company Dashboard', icon: Home },
         { path: '/admin-users', label: 'Admin Users', icon: Shield },
         { path: '/employees', label: 'Employees', icon: Users },
-        { path: '/timesheet', label: 'Timesheet', icon: Clock },
-        { path: '/departments', label: 'Departments', icon: Building2 },
-        { path: '/projects', label: 'Projects', icon: FolderOpen },
+        // { path: '/timesheet', label: 'Timesheet', icon: Clock },
+        // { path: '/departments', label: 'Departments', icon: Building2 },
+        // { path: '/projects', label: 'Projects', icon: FolderOpen },
         { path: '/company/settings', label: 'Settings', icon: Settings }
       ];
     } else if (user?.role === 'ADMIN') {
       return [
         { path: '/dashboard', label: 'Dashboard', icon: Home },
         { path: '/employees', label: 'Employees', icon: Users },
-        { path: '/timesheet', label: 'Timesheet', icon: Clock },
-        { path: '/departments', label: 'Departments', icon: Building2 },
-        { path: '/projects', label: 'Projects', icon: FolderOpen }
+        // { path: '/timesheet', label: 'Timesheet', icon: Clock },
+        // { path: '/departments', label: 'Departments', icon: Building2 },
+        // { path: '/projects', label: 'Projects', icon: FolderOpen }
       ];
     } else {
       return [

@@ -18,9 +18,9 @@ import AdminUsersPage from './component/AdminUsersPage';
 import AddAdminUser from './component/AddAdminUser';
 import EmployeesPage from './component/EmployeesPage';
 import AddEmployee from './component/AddEmployeeForm';
-import Departments from './component/Departments';
-import ProjectsPage from './component/ProjectsPage';
-import TimesheetsPage from './component/TimesheetsPage';
+// import Departments from './component/Departments';
+// import ProjectsPage from './component/ProjectsPage';
+// import TimesheetsPage from './component/TimesheetsPage';
 
 
 function AppContent() {
@@ -85,17 +85,21 @@ function AppContent() {
           <Route path="admin-users/new" element={<AddAdminUser />} />
           <Route path="employees" element={<EmployeesPage />} />
           <Route path="employees/new" element={<AddEmployee />} />
-          {/* Departments Route (shared by Parent and Admin) */}
-          <Route path="departments" element={<Departments />} />
+
+
+          Departments Route (shared by Parent and Admin)
+          {/* <Route path="departments" element={<Departments />} /> */}
           {/* Projects Route */}
-          <Route path="projects" element={<ProjectsPage />} />
+          {/* <Route path="projects" element={<ProjectsPage />} /> */}
           {/* Timesheet Route */}
-          <Route path="timesheet" element={<TimesheetsPage />} />
+          {/* <Route path="timesheet" element={<TimesheetsPage />} /> */}
           
           {/* Admin/Employee Routes */}
           <Route path="admin-dashboard" element={<AdminDashboard />} />
           <Route path="dashboard" element={<EmployeeDashboard />} />
         </Route>
+
+
         
         {/* Catch all route */}
         <Route path="*" element={<Navigate to="/" replace />} />
