@@ -148,7 +148,7 @@ const Layout = () => {
         { path: '/admin-users', label: 'Admin Users', icon: Shield },
         { path: '/employees', label: 'Employees', icon: Users },
         // { path: '/timesheet', label: 'Timesheet', icon: Clock },
-        // { path: '/departments', label: 'Departments', icon: Building2 },
+        { path: '/departments', label: 'Departments', icon: Building2 },
         // { path: '/projects', label: 'Projects', icon: FolderOpen },
         { path: '/company/settings', label: 'Settings', icon: Settings }
       ];
@@ -157,7 +157,7 @@ const Layout = () => {
         { path: '/dashboard', label: 'Dashboard', icon: Home },
         { path: '/employees', label: 'Employees', icon: Users },
         // { path: '/timesheet', label: 'Timesheet', icon: Clock },
-        // { path: '/departments', label: 'Departments', icon: Building2 },
+        { path: '/departments', label: 'Departments', icon: Building2 },
         // { path: '/projects', label: 'Projects', icon: FolderOpen }
       ];
     } else {
