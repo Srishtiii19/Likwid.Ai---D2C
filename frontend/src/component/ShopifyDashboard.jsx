@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
-const Dashboard = () => {
+const ShopifyDashboard = () => {
   const [currentPage, setCurrentPage] = useState('dashboard');
   const [companyName, setCompanyName] = useState('Bio Mac Lifesciences');
 
@@ -37,14 +37,42 @@ const Dashboard = () => {
   ];
 
   const StatCard = ({ title, value, subtitle, bgColor }) => {
+    const getBackgroundColor = (bgColor) => {
+      switch(bgColor) {
+        case 'bg-blue-500': return '#3b82f6';
+        case 'bg-indigo-500': return '#6366f1';
+        case 'bg-purple-500': return '#8b5cf6';
+        case 'bg-purple-600': return '#7c3aed';
+        default: return '#3b82f6';
+      }
+    };
+
     return (
-      <div className={`${bgColor} rounded-lg p-6 text-white`}>
-        <div className="flex items-center justify-between">
+      <div style={{
+        backgroundColor: getBackgroundColor(bgColor),
+        borderRadius: '8px',
+        padding: '24px',
+        color: 'white'
+      }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between'
+        }}>
           <div>
-            <div className="text-2xl font-bold">{value}</div>
-            <div className="text-sm opacity-90">{subtitle}</div>
+            <div style={{
+              fontSize: '24px',
+              fontWeight: 'bold'
+            }}>{value}</div>
+            <div style={{
+              fontSize: '14px',
+              opacity: '0.9'
+            }}>{subtitle}</div>
           </div>
-          <div className="text-3xl opacity-70">
+          <div style={{
+            fontSize: '30px',
+            opacity: '0.7'
+          }}>
             {title.includes('Order') ? '📊' : title.includes('Customers') ? '👥' : title.includes('Goods') ? '📦' : '💰'}
           </div>
         </div>
@@ -54,28 +82,64 @@ const Dashboard = () => {
 
   const StockChart = ({ data, title }) => {
     return (
-      <div className="bg-white rounded-lg p-6 shadow-lg">
-        <h3 className="text-lg font-semibold mb-4 text-gray-800">{title}</h3>
-        <div className="grid grid-cols-3 gap-4 mb-6">
+      <div style={{
+        backgroundColor: 'white',
+        borderRadius: '8px',
+        padding: '24px',
+        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'
+      }}>
+        <h3 style={{
+          fontSize: '18px',
+          fontWeight: '600',
+          marginBottom: '16px',
+          color: '#1f2937'
+        }}>{title}</h3>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: '16px',
+          marginBottom: '24px'
+        }}>
           {data.map((item, index) => (
             <div 
               key={index}
-              className="p-4 rounded-lg"
-              style={{ backgroundColor: `${item.color}20` }}
+              style={{
+                padding: '16px',
+                borderRadius: '8px',
+                backgroundColor: `${item.color}20`
+              }}
             >
-              <div className="text-sm font-medium" style={{ color: item.color }}>
+              <div style={{
+                fontSize: '14px',
+                fontWeight: '500',
+                color: item.color
+              }}>
                 {item.name}
               </div>
-              <div className="text-2xl font-bold text-gray-800">
+              <div style={{
+                fontSize: '24px',
+                fontWeight: 'bold',
+                color: '#1f2937'
+              }}>
                 {item.value}%
               </div>
-              <div className="text-sm text-gray-600">
+              <div style={{
+                fontSize: '14px',
+                color: '#4b5563'
+              }}>
                 {item.items} Items
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
+              <div style={{
+                width: '100%',
+                backgroundColor: '#e5e7eb',
+                borderRadius: '9999px',
+                height: '8px',
+                marginTop: '8px'
+              }}>
                 <div 
-                  className="h-2 rounded-full"
                   style={{ 
+                    height: '8px',
+                    borderRadius: '9999px',
                     backgroundColor: item.color,
                     width: `${item.value}%`
                   }}
@@ -90,9 +154,19 @@ const Dashboard = () => {
 
   const PieChartComponent = ({ data, title }) => {
     return (
-      <div className="bg-white rounded-lg p-6 shadow-lg">
-        <h3 className="text-lg font-semibold mb-4 text-gray-800">{title}</h3>
-        <div className="h-64">
+      <div style={{
+        backgroundColor: 'white',
+        borderRadius: '8px',
+        padding: '24px',
+        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'
+      }}>
+        <h3 style={{
+          fontSize: '18px',
+          fontWeight: '600',
+          marginBottom: '16px',
+          color: '#1f2937'
+        }}>{title}</h3>
+        <div style={{ height: '256px' }}>
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
@@ -110,17 +184,34 @@ const Dashboard = () => {
             </PieChart>
           </ResponsiveContainer>
         </div>
-        <div className="mt-4">
+        <div style={{ marginTop: '16px' }}>
           {data.map((item, index) => (
-            <div key={index} className="flex justify-between items-center py-1">
-              <div className="flex items-center">
+            <div key={index} style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              paddingTop: '4px',
+              paddingBottom: '4px'
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center'
+              }}>
                 <div 
-                  className="w-4 h-4 rounded mr-2"
-                  style={{ backgroundColor: item.color }}
+                  style={{
+                    width: '16px',
+                    height: '16px',
+                    borderRadius: '4px',
+                    marginRight: '8px',
+                    backgroundColor: item.color
+                  }}
                 ></div>
-                <span className="text-sm">{item.name}</span>
+                <span style={{ fontSize: '14px' }}>{item.name}</span>
               </div>
-              <span className="text-sm font-semibold">{item.value}%</span>
+              <span style={{
+                fontSize: '14px',
+                fontWeight: '600'
+              }}>{item.value}%</span>
             </div>
           ))}
         </div>
@@ -129,59 +220,208 @@ const Dashboard = () => {
   };
 
   const OrderTable = ({ orders, type }) => {
+    const getStatusStyle = (status) => {
+      if (status === 'F') {
+        return {
+          backgroundColor: '#dcfce7',
+          color: '#166534'
+        };
+      } else if (status === 'A') {
+        return {
+          backgroundColor: '#fef3c7',
+          color: '#92400e'
+        };
+      } else {
+        return {
+          backgroundColor: '#dbeafe',
+          color: '#1e40af'
+        };
+      }
+    };
+
+    const getStatusText = (status) => {
+      if (status === 'F') return 'Fulfilled';
+      if (status === 'A') return 'Active';
+      return 'New';
+    };
+
     return (
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h2 className="text-xl font-semibold text-gray-800">
+      <div style={{
+        backgroundColor: 'white',
+        borderRadius: '8px',
+        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        overflow: 'hidden'
+      }}>
+        <div style={{
+          padding: '16px 24px',
+          borderBottom: '1px solid #e5e7eb'
+        }}>
+          <h2 style={{
+            fontSize: '20px',
+            fontWeight: '600',
+            color: '#1f2937'
+          }}>
             {type === 'sale' ? 'Sale Orders' : 'Purchase Orders'}
           </h2>
         </div>
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead className="bg-gray-50">
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%' }}>
+            <thead style={{ backgroundColor: '#f9fafb' }}>
               <tr>
                 {type === 'sale' ? (
                   <>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order Name</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Customer</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                    <th style={{
+                      padding: '12px 24px',
+                      textAlign: 'left',
+                      fontSize: '12px',
+                      fontWeight: '500',
+                      color: '#6b7280',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    }}>Order Name</th>
+                    <th style={{
+                      padding: '12px 24px',
+                      textAlign: 'left',
+                      fontSize: '12px',
+                      fontWeight: '500',
+                      color: '#6b7280',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    }}>Customer</th>
+                    <th style={{
+                      padding: '12px 24px',
+                      textAlign: 'left',
+                      fontSize: '12px',
+                      fontWeight: '500',
+                      color: '#6b7280',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    }}>Quantity</th>
+                    <th style={{
+                      padding: '12px 24px',
+                      textAlign: 'left',
+                      fontSize: '12px',
+                      fontWeight: '500',
+                      color: '#6b7280',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    }}>Amount</th>
+                    <th style={{
+                      padding: '12px 24px',
+                      textAlign: 'left',
+                      fontSize: '12px',
+                      fontWeight: '500',
+                      color: '#6b7280',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    }}>Status</th>
                   </>
                 ) : (
                   <>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">PO Item</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vendor</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                    <th style={{
+                      padding: '12px 24px',
+                      textAlign: 'left',
+                      fontSize: '12px',
+                      fontWeight: '500',
+                      color: '#6b7280',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    }}>PO Item</th>
+                    <th style={{
+                      padding: '12px 24px',
+                      textAlign: 'left',
+                      fontSize: '12px',
+                      fontWeight: '500',
+                      color: '#6b7280',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    }}>Vendor</th>
+                    <th style={{
+                      padding: '12px 24px',
+                      textAlign: 'left',
+                      fontSize: '12px',
+                      fontWeight: '500',
+                      color: '#6b7280',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    }}>Quantity</th>
+                    <th style={{
+                      padding: '12px 24px',
+                      textAlign: 'left',
+                      fontSize: '12px',
+                      fontWeight: '500',
+                      color: '#6b7280',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    }}>Amount</th>
+                    <th style={{
+                      padding: '12px 24px',
+                      textAlign: 'left',
+                      fontSize: '12px',
+                      fontWeight: '500',
+                      color: '#6b7280',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    }}>Status</th>
                   </>
                 )}
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody style={{
+              backgroundColor: 'white'
+            }}>
               {orders.map((order, index) => (
-                <tr key={index} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                <tr key={index} style={{
+                  borderBottom: '1px solid #e5e7eb'
+                }} onMouseEnter={(e) => e.target.parentElement.style.backgroundColor = '#f9fafb'}
+                   onMouseLeave={(e) => e.target.parentElement.style.backgroundColor = 'white'}>
+                  <td style={{
+                    padding: '16px 24px',
+                    whiteSpace: 'nowrap',
+                    fontSize: '14px',
+                    fontWeight: '500',
+                    color: '#111827'
+                  }}>
                     {type === 'sale' ? order.orderName : order.poItem}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td style={{
+                    padding: '16px 24px',
+                    whiteSpace: 'nowrap',
+                    fontSize: '14px',
+                    color: '#6b7280'
+                  }}>
                     {type === 'sale' ? order.customer : order.vendor}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td style={{
+                    padding: '16px 24px',
+                    whiteSpace: 'nowrap',
+                    fontSize: '14px',
+                    color: '#6b7280'
+                  }}>
                     {order.quantity.toLocaleString()}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-green-600">
+                  <td style={{
+                    padding: '16px 24px',
+                    whiteSpace: 'nowrap',
+                    fontSize: '14px',
+                    fontWeight: '500',
+                    color: '#059669'
+                  }}>
                     ₹{order.amount.toLocaleString()}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                      order.status === 'F' ? 'bg-green-100 text-green-800' :
-                      order.status === 'A' ? 'bg-yellow-100 text-yellow-800' :
-                      'bg-blue-100 text-blue-800'
-                    }`}>
-                      {order.status === 'F' ? 'Fulfilled' : 
-                       order.status === 'A' ? 'Active' : 'New'}
+                  <td style={{
+                    padding: '16px 24px',
+                    whiteSpace: 'nowrap'
+                  }}>
+                    <span style={{
+                      display: 'inline-flex',
+                      padding: '2px 8px',
+                      fontSize: '12px',
+                      fontWeight: '600',
+                      borderRadius: '9999px',
+                      ...getStatusStyle(order.status)
+                    }}>
+                      {getStatusText(order.status)}
                     </span>
                   </td>
                 </tr>
@@ -194,12 +434,21 @@ const Dashboard = () => {
   };
 
   const renderDashboard = () => (
-    <div className="space-y-6">
-      {/* Header - removed container */}
-      <h1 className="text-2xl font-bold text-gray-800">Welcome, Bing</h1>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      {/* Header */}
+      <h1 style={{
+        fontSize: '24px',
+        fontWeight: 'bold',
+        color: '#1f2937'
+      }}>Welcome, Bing</h1>
 
-      {/* Stats Grid - changed to 2 rows */}
-      <div className="grid grid-rows-2 grid-cols-2 gap-6">
+      {/* Stats Grid */}
+      <div style={{
+        display: 'grid',
+        gridTemplateRows: 'repeat(2, 1fr)',
+        gridTemplateColumns: 'repeat(2, 1fr)',
+        gap: '24px'
+      }}>
         <StatCard
           title="Average Order Value"
           value="3525250.00"
@@ -226,17 +475,21 @@ const Dashboard = () => {
         />
       </div>
 
-      {/* Charts Row - 2 rows layout */}
-      <div className="space-y-6">
+      {/* Charts Row */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
         <StockChart data={stockData} title="Stock Analysis" />
-        <div className="grid grid-cols-2 gap-6">
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: '24px'
+        }}>
           <PieChartComponent data={dealsByStatus} title="Deals by Status" />
           <PieChartComponent data={dealsByStatus} title="Deals by Amount" />
         </div>
       </div>
 
       {/* Orders Section */}
-      <div className="space-y-8">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
         <OrderTable orders={saleOrders} type="sale" />
         <OrderTable orders={purchaseOrders} type="purchase" />
       </div>
@@ -244,15 +497,35 @@ const Dashboard = () => {
   );
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Navigation - removed Likwid.Ai heading */}
-      <div className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center">
+    <div style={{
+      minHeight: '100vh',
+      backgroundColor: 'white'
+    }}>
+      {/* Navigation */}
+      <div style={{
+        backgroundColor: 'white',
+        boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)'
+      }}>
+        <div style={{
+          maxWidth: '1280px',
+          margin: '0 auto',
+          padding: '0 16px'
+        }}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            height: '64px'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center'
+            }}>
               {/* Removed the Likwid.Ai heading */}
             </div>
-            <nav className="flex space-x-8">
+            <nav style={{
+              display: 'flex',
+              gap: '32px'
+            }}>
               {/* Removed Dashboard navigation option */}
             </nav>
           </div>
@@ -260,8 +533,14 @@ const Dashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8">
-        <div className="px-4 py-2 sm:px-0">
+      <div style={{
+        maxWidth: '1280px',
+        margin: '0 auto',
+        padding: '8px 24px'
+      }}>
+        <div style={{
+          padding: '16px 0'
+        }}>
           {renderDashboard()}
         </div>
       </div>
@@ -269,4 +548,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default ShopifyDashboard;
